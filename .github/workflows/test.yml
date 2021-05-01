@@ -1,0 +1,21 @@
+
+name: Lint
+
+on:
+    pull_request:
+
+jobs:
+    yaml-files:
+        name: YAML files
+
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+
+            - name: Lint wrong position
+              run: echo "::warning file=wrong_yaml.yaml, line=3, col=0::Unable to parse at line 3 (near \"valid\")."
+
+            - name: Lint right position
+              run: echo "::error file=wrong_yaml.yaml,line=3,col=0::Unable to parse at line 3 (near \"valid\")."
