@@ -29,4 +29,4 @@ jobs:
                   composer-options: "--prefer-dist --prefer-stable"
 
             - name: Lint yaml
-              run: bin/console lint:yaml wrong_yaml.yaml --format github
+              run: echo "::error file=wrong_yaml.yaml,line=3,col=0::Unable to parse at line 3 (near \"valid\")."
